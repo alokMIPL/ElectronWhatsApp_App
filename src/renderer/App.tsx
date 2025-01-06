@@ -4,6 +4,7 @@ import WrapperComponents from './components/WrapperComponents';
 import ChatComponent from './components/routes-comps/ChatsComponents';
 import DefaultChatPage from './components/chat-page-comps/DefaultChatPage';
 import ChatOutput from './components/chat-page-comps/ChatPage';
+import ChatPage from './components/chat-page-comps/ChatPage';
 
 export default function App() {
   return (
@@ -14,7 +15,7 @@ export default function App() {
             <Route path="/chat" element={<ChatComponent/>} 
             children={[
               <Route path="/chat/" element={<DefaultChatPage/>} />,
-              <Route path="/chat/:conversationId" element={<ChatOutput/>} />
+              <Route path="/chat/:conversationId" element={<ChatPage/>} />
             ]}
             />
           ]}

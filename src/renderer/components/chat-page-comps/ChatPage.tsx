@@ -5,7 +5,7 @@ import ChatPageCenter from './ChatPageCenter'
 
 const ChatOutput = () => {
   return (
-    <div className='chat-output-page' >
+    <div className='chat-page' >
       <ChatPageHeader/>
       <ChatPageCenter/>
       <ChatBox/>

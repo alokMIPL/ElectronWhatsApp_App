@@ -19,7 +19,7 @@
   --item-hightlight-bg: #dedede;
   --border-color: #dadada;
   --input-border-color: #f2f2f2;
-  --chat-page-bg: #f7f3ef;
+  --chat-page-bg: #eae6df;
   --chat-incoming-bg: #ffffff;
   --sent-chat-bg: #e1ffd4;
   --chat-bubble-text-color: #222720;
@@ -128,6 +128,7 @@ html.dark {
   height: 100%;
   font-family: "HVBold";
   overflow-y: auto;
+  padding-bottom: 30px;
 }
 
 ::-webkit-scrollbar {
@@ -505,6 +506,90 @@ html.dark {
   background-color: var(--item-hightlight-bg);
 }
 
-.chat-page-center{
-
+.chat-page{
+  /* background-color: red; */
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;  
 }
+
+.chat-page-center{
+  background: var(--chat-page-bg) url("../renderer/../../assets/imgs/whatsapp-bg.png");
+  /* background: blue url("../renderer/../../assets/imgs/default-bg.png"); */
+  background-size: cover;
+  flex-grow: 1;
+}
+
+.chat-page-center .chat-page-enc-text {
+  background-color: var(--chat-encr-msg-bg);
+  color: var(--chat-encr-text-color);
+  width: 60%;
+  border-radius: 8px;
+  font-size: 80%;
+  padding: 10px;
+  text-align: center;
+  /* line-height: 14px; */
+  margin-bottom: 10px;
+}
+
+.chat-page-center .chat-page-enc-text svg {
+  width: 13px;
+  height: 13px;
+  margin-right: 8px;
+}
+
+.chat-page-center .chat-page-enc-text svg path {
+  fill: var(--chat-encr-text-color) !important;
+}
+
+.chat-page-center .chat-page-enc-text span {
+  font-family: "HVBold";
+  margin-left: 4px;
+}
+
+.chat-bubble-container {
+  width: 100%;
+  display: flex;
+  margin-bottom: 3px;
+  padding: 0px 8px;
+}
+
+.chat-bubble-container .chat-bubble-inner  {
+  font-size: 85%; 
+  color: var(--chat-bubble-text-color);
+  background-color: var(--chat-incoming-bg);
+  width: auto;
+  display: flex;
+  align-items: flex-end;
+  border-radius: 13px;
+  box-shadow: 0px 1px 2px 0px rgba(10, 10, 10, 0.3) ;
+  padding: 8px;
+}
+
+.chat-bubble-container.sent .chat-bubble-inner  {
+  background-color: var(--sent-chat-bg) !important ;
+}
+
+.chat-bubble-container.sent{
+  justify-content: flex-end;
+}
+
+.chat-bubble-container .chat-bubble-inner > div:last-child {
+  font-size: 85%;
+  color: var(--text-color);
+  margin-left: 15px;
+}
+
+.chat-bubble-container .chat-bubble-inner > div:last-child svg {
+  width: 18px;
+  height: 18px;
+  margin-left: 5px;
+}
+
+.chat-bubble-container .chat-bubble-inner > div:last-child svg path {
+  stroke: var(--text-color);
+}
+
+
+

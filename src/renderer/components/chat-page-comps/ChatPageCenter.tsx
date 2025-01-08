@@ -8,9 +8,17 @@ const ChatPageCenter = () => {
 
   const chatMessages = useAppSelector(state => state.main.chats)
   const {conversationId} = useParams()
+  const user_details = useAppSelector((state) => state.main.user_details);
+  const containerRef = React.useRef<any>()
+
+  React.useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.scrollTop = containerRef.current.scrollHeight
+    }
+  }, [conversationId])
 
   return (
-    <div className='chat-page-center'>
+    <div ref={containerRef} className='chat-page-center'>
       <div className="d-flex justify-content-center mt-3">
         <div className='chat-page-enc-text'>
           <PadlockIcon/>
@@ -24,7 +32,7 @@ const ChatPageCenter = () => {
       <div>
         {
           chatMessages.filter(chat => chat.conversation_id === conversationId as unknown as number).map(chat => 
-            <ChatBubble chat= {chat}/>
+            <ChatBubble chat= {chat} sent={chat.user_id == user_details.id} />
           )
         }
         

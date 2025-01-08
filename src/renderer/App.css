@@ -132,7 +132,7 @@ html.dark {
 }
 
 ::-webkit-scrollbar {
-  width: 3px !important;
+  width: 8px !important;
   background-color: transparent !important;
   border: none !important;
 }
@@ -145,7 +145,7 @@ html.dark {
 
 ::-webkit-scrollbar-thumb {
   width: 3px !important;
-  background-color: var(--border-color) !important;
+  background-color: rgba(128, 128, 128, 0.65) !important;
   border: none !important;
   border-radius: 50px;
 }
@@ -256,6 +256,9 @@ html.dark {
 .route-component .route-comp-1 .chat-head-container{
   width: 100%;
   padding: 4px 10px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 
 .route-component .route-comp-1 .chat-head-container img{
@@ -274,9 +277,11 @@ html.dark {
   padding: 8px 4px;
   border-radius: 5px;
   overflow: hidden;
+  width: 98%;
 }
 
-.route-component .route-comp-1 .chat-head-container .chat-head-inner:hover{
+.route-component .route-comp-1 .chat-head-container .chat-head-inner:hover,
+.route-component .route-comp-1 .chat-head-container.active .chat-head-inner{
   background-color: var(--list-container-hightlight-bg);
 }
 
@@ -392,6 +397,11 @@ html.dark {
 
 .chat-page-header > div:first-child{
   -webkit-app-region: none;
+  cursor: default;
+}
+
+.chat-page-header > div:first-child:active{
+  opacity: 0.4;
 }
 
 .chat-page-header > div:first-child > div:last-child{
@@ -517,8 +527,9 @@ html.dark {
 .chat-page-center{
   background: var(--chat-page-bg) url("../renderer/../../assets/imgs/whatsapp-bg.png");
   /* background: blue url("../renderer/../../assets/imgs/default-bg.png"); */
-  background-size: cover;
+  background-size: 50%;
   flex-grow: 1;
+  overflow: auto;
 }
 
 .chat-page-center .chat-page-enc-text {
@@ -529,7 +540,7 @@ html.dark {
   font-size: 80%;
   padding: 10px;
   text-align: center;
-  /* line-height: 14px; */
+  line-height: 17px;
   margin-bottom: 10px;
 }
 

@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { IChatBubble, IChatHead } from './types'
 import { ReactComponent as SendCheckmarks } from '../../../assets/icons-svg/checkmark-double.svg'
+import { useParams } from 'react-router-dom'
 
 export const SidebarIcon = React.memo((props: any) => {
   return (
@@ -12,8 +13,12 @@ export const SidebarIcon = React.memo((props: any) => {
 })
 
 export const ChatHead = React.memo(({data}: {data: IChatHead}) => {
+  const {conversationId} = useParams();
+  React.useEffect(() => {
+    console.log( "conversationId is", conversationId)
+  },[conversationId])
   return (
-    <Link to={"/chat/"+data.id} className='chat-head-container' >
+    <Link to={"/chat/"+data.id} className={conversationId as unknown as number == data.id ? 'chat-head-container active' : 'chat-head-container'} >
       <div className='chat-head-inner'>
         <div>
           <img src={data.profileImage} alt="" />
@@ -32,10 +37,10 @@ export const ChatHead = React.memo(({data}: {data: IChatHead}) => {
   )
 })
 
-export const ChatBubble = React.memo(({chat}: {chat: IChatBubble}) => {
+export const ChatBubble = React.memo(({chat, sent}: {chat: IChatBubble; sent: boolean}) => {
   return (
     // sent | incoming
-    <div className='chat-bubble-container'>
+    <div className={sent ? 'chat-bubble-container sent' : 'chat-bubble-container incoming'}>
       <div className='chat-bubble-inner '>
         <div>{chat.message}</div>
         <div>

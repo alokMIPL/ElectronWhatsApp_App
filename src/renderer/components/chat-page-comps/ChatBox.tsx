@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from '../../shared/hooks'
 import { updateChatBubble } from '../../shared/rdx-slice'
 import { IChatBubble } from '../../shared/types'
 import { useParams } from 'react-router-dom';
+import Contacts from '../../shared/contacts'
 
 
 const ChatBox = () => {
@@ -22,14 +23,27 @@ const ChatBox = () => {
       const chatBubble: IChatBubble = {
         message: e.target.innerText,
         time: "05:55",
-        user_id: user_details.id.toString(),
+        user_id: user_details.id,
         id: chats.filter(chat => chat.conversation_id == conversationId as unknown as number ).length + 1,
         conversation_id: conversationId as unknown as number,
       }
-      dispatch(updateChatBubble(chatBubble))
+      dispatch(updateChatBubble(chatBubble));
+      if (chats.filter(chat => chat.conversation_id == conversationId as unknown as number ).length % 3 === 0) {
+        const chatBubbleRes: IChatBubble = {
+          message: "I konw that",
+          time: "05:55",
+          user_id: Contacts.find(contact => contact.id == conversationId as unknown as number )!.id,
+          id: chats.filter(chat => chat.conversation_id == conversationId as unknown as number ).length + 1,
+          conversation_id: conversationId as unknown as number,
+        }
+        dispatch(updateChatBubble(chatBubbleRes));
+      }
+      setTimeout(() => {
+        document.querySelector('.chat-page-center')!.scrollTop = document.querySelector('.chat-page-center')!.scrollHeight as number
+      },300)
+      e.target.innerText = ""
     }
-    console.log(e)
-  }, [])
+  }, [chats])
 
   // indexedDB
   // webSockets

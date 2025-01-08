@@ -5,15 +5,21 @@ import {ChatHead} from '../../shared/ReUseables'
 import {ReactComponent as PadlockIcon} from '../../../../assets/icons-svg/padlock.svg' 
 import { IChatHead } from '../../shared/types'
 import contacts from '../../shared/contacts';
+import { useParams } from 'react-router-dom'
 
 const ChatHeadList = React.memo((props: any) => {
+  const {conversationId} = useParams();
 
-  const [chatHeads, setChatHeads] = React.useState<IChatHead[]>([]);
-  const handleFetchChatHeads = React.useCallback(() => {
-  },[])
+  React.useEffect(() => {
+    console.log('conversationId', conversationId)
+  }, [conversationId])
 
-  React.useLayoutEffect(() => {
-  },[])
+  // const [chatHeads, setChatHeads] = React.useState<IChatHead[]>([]);
+  // const handleFetchChatHeads = React.useCallback(() => {
+  // },[])
+
+  // React.useLayoutEffect(() => {
+  // },[])
 
   return (
     <div className='route-comp-1 chat-head-list'>

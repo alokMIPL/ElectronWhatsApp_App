@@ -8,7 +8,7 @@ import {IMainState, IChatBubble} from './types'
 const initialState: IMainState = {
   chats: [],
   user_details: {
-    id: 1,
+    id: 658,
     name: "Paulos Ab",
     phone_number: "+234 0706 788 9902",
     profile_image: "https://tse1.mm.bing.net/th?id=OIP.hCfHyL8u8XAbreXuaiTMQgHaHZ&pid=Api&P=0&h=180"

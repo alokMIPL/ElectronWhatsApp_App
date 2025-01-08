@@ -15,7 +15,7 @@ export interface IChatHead {
 export interface IChatBubble {
   message: string;
   time: string;
-  user_id: string;
+  user_id: number;
   id: number;
   conversation_id: number;
 }

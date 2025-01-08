@@ -40,15 +40,21 @@ export const ChatPageHeader = () => {
 
 export const DropdownEl = React.memo((props: any) => {
   const shouldShow = useAppSelector((state) => state.main.showDropdown);
+  const dropdownRef = React.useRef<any>()
+  const dispatch = useAppDispatch()
 
   React.useEffect(() => {
     document.onclick = (e) => {
-      console.log(e)
+      console.log(e);
+      const targetEl = e.target as HTMLElement
+      if (!targetEl.classList.contains(".profile-dropdown") || dropdownRef.current.querySelector("."+targetEl.classList[0]) == null) {
+        dispatch(setShowDropdown(false))
+      }
     }
-  },[])
+  },[dropdownRef.current])
 
   return (
-    <div className={shouldShow ? 'profile-dropdown show' : 'profile-dropdown'} >
+    <div ref={dropdownRef} className={shouldShow ? 'profile-dropdown show' : 'profile-dropdown'} >
       <div className="profile-dropdown-inner">
         <div className='first' >
           <div>

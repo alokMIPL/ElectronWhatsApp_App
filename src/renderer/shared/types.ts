@@ -2,6 +2,7 @@
 export interface IMainState {
   chats: IChatBubble[];
   user_details: TUserDetails;
+  showDropdown: boolean;
 }
 
 export interface IChatHead {
@@ -25,4 +26,12 @@ export type TUserDetails = {
   name: string;
   phone_number: string;
   profile_image: string;
+}
+
+export interface IListItem {
+  icon?: any; 
+  title: string; 
+  isRoute?: boolean; 
+  info?: string;
+  style?: React.CSSProperties;
 }

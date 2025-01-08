@@ -1,8 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { IChatBubble, IChatHead } from './types'
+import { IChatBubble, IChatHead, IListItem } from './types'
 import { ReactComponent as SendCheckmarks } from '../../../assets/icons-svg/checkmark-double.svg'
-import { useParams } from 'react-router-dom'
+import { ReactComponent as AngleRightIcon } from '../../../assets/icons-svg/angle-right (1).svg'
+import { useParams } from 'react-router-dom';
 
 export const SidebarIcon = React.memo((props: any) => {
   return (
@@ -48,6 +49,42 @@ export const ChatBubble = React.memo(({chat, sent}: {chat: IChatBubble; sent: bo
           <SendCheckmarks/>
         </div>
       </div>
+    </div>
+  )
+})
+
+
+export const ListItem = React.memo(({icon, title, isRoute, info, style}: IListItem) => {
+  return (
+    <div className='last-item' style={style} >
+      <div>
+        {
+          icon &&
+          <div>
+            {icon}
+          </div>
+        }
+        <div>
+          <div>{title}</div>
+          <div className='info' >
+            {info}
+          </div>
+        </div>
+      </div>
+      {
+        isRoute &&
+        <div>
+          <AngleRightIcon className='no-fill' />        
+        </div>
+      }
+    </div>
+  )
+})
+
+export const ListGroup = React.memo((props: any) => {
+  return (
+    <div className='list-item' >
+      {props.children}
     </div>
   )
 })

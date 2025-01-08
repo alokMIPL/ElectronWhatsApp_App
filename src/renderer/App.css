@@ -32,6 +32,8 @@
   --settings-page-bg: #ececec;
   --inverse-white: #000000;
   --input-bg: #ffffff;
+  --last-item-bg: #323232;
+  --last-item-bg: #ffffff;
 }
 
 html.dark {
@@ -53,6 +55,7 @@ html.dark {
   --inverse-white: #ffffff;
   --settings-page-bg: #1e1e1e;
   --input-bg: #282829;
+  --last-item-bg: #ffffff;
 }
 
 .app-wrapper{
@@ -398,11 +401,123 @@ html.dark {
 .chat-page-header > div:first-child{
   -webkit-app-region: none;
   cursor: default;
+  position: relative;
 }
 
 .chat-page-header > div:first-child:active{
   opacity: 0.4;
 }
+
+.chat-page-header > div:first-child > div:first-child{
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.chat-page-header > div:first-child > div:first-child .profile-dropdown{
+  position: absolute;
+  top: 140%;
+  background-color: var(--sidebar-bg);
+  width: 320px;
+  height: auto;
+  border-radius: 12px;
+  z-index: +4;
+  border: 1px solid var(--border-color);
+  padding-bottom: 20px;
+  max-height: 500px;
+  overflow-y: auto;
+  padding-top: 40px;
+  box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.3) ;
+  opacity: 1 !important;
+}
+
+.chat-page-header > div:first-child > div:first-child .profile-dropdown{
+  opacity: unset !important;
+}
+
+.chat-page-header > div:first-child > div:first-child .profile-dropdown::after{
+  content: '';
+  position: absolute;
+  top: -13px;
+  width: 0px;
+  height: 0px;
+  border-left: 13px solid transparent;
+  border-right: 13px solid transparent;
+  border-bottom: 18px solid var(--sidebar-bg);
+  left: calc(50% - 9px);
+  z-index: +5;
+}
+
+.chat-page-header > div:first-child > div:first-child .profile-dropdown .profile-dropdown-inner{
+  width: 100%;
+  height: 100%;
+  /* padding: 30px; */
+}
+
+.chat-page-header > div:first-child > div:first-child .profile-dropdown .profile-dropdown-inner .first{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.chat-page-header > div:first-child > div:first-child .profile-dropdown .profile-dropdown-inner .first img{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.chat-page-header > div:first-child > div:first-child .profile-dropdown .profile-dropdown-inner .first div:nth-child(2){
+  font-size: 130%;
+  font-family: "HVBold";
+  color: var(--inverse-white);
+}
+
+.chat-page-header > div:first-child > div:first-child .profile-dropdown .profile-dropdown-inner .first div:last-child{
+  font-size: 110%;
+  font-family: "HVBold";
+  color: var(--text-color);
+}
+
+.chat-page-header > div:first-child > div:first-child .profile-dropdown .profile-dropdown-inner .second{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 10px;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.chat-page-header > div:first-child > div:first-child .profile-dropdown .profile-dropdown-inner .second > div{
+  background-color: var(--list-container-bg);
+  border-radius: 12px;
+  width: 95px;
+  height: 50px;
+  color: var(--inverse-white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-page-header > div:first-child > div:first-child .profile-dropdown .profile-dropdown-inner .second svg{
+  width: 30px !important ;
+  /* height: 23px !important; */
+  /* background-color: green; */
+  margin: 0px !important;
+}
+
+.chat-page-header > div:first-child > div:first-child .profile-dropdown .profile-dropdown-inner .second svg path{
+  fill: var(--app-light-green);
+}
+
+.chat-page-header > div:first-child > div:first-child .profile-dropdown .profile-dropdown-inner .fourth > div:first-child{
+  font-family: "HVBold";
+  font-size: 120%;
+  padding-left: 20px;
+  color: var(--inverse-white);
+} 
 
 .chat-page-header > div:first-child > div:last-child{
   display: block;
@@ -602,5 +717,83 @@ html.dark {
   stroke: var(--text-color);
 }
 
+.list-group{
+  display: block;
+  border-radius: 5px;
+  overflow: hidden;
+}
 
+
+
+
+.list-group > div:first{
+  border-radius: 5px 5px 0px 0px !important;
+}
+
+.list-group > div:last-child{
+  border-radius: 0px 0px 5px 5px !important;
+}
+
+
+
+
+
+.list-group .last-item:not(.last-item:last-child){
+  border-bottom: 0.5px solid var(--border-color) ;
+}
+
+.list-group .last-item{
+  border-radius: 0px !important;
+}
+
+.last-item {
+  background-color: var(--last-item-bg);
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 0px !important;
+  width: 100%;
+  box-shadow: var(--border-color) 0px 0px 0px 0.3px;
+}
+
+.last-item svg {
+  width: 20px !important;
+  height: 20px !important;
+  margin: 0px !important;
+}
+
+.last-item svg.no-fill {
+  width: 12px !important;
+  height: 12px !important;
+}
+
+.last-item svg.no-fill path {
+  fill: none;
+}
+
+.last-item svg.has-stroke path {
+  fill: white;
+  stroke: var(--app-light-green);
+}
+
+.last-item div:first-child {
+  /* flex-grow: 1; */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.last-item > div:first-child > div:nth-child(2){
+  color: var(--inverse-white);
+}
+
+.last-item > div:first-child > div:nth-child(2) .info{
+  font-size: 78%;
+  color: var(--text-color);
+}
+
+.last-item div:first-child svg {
+  margin-right: 10px !important ;
+}
 

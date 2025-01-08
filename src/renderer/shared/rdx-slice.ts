@@ -12,7 +12,8 @@ const initialState: IMainState = {
     name: "Paulos Ab",
     phone_number: "+234 0706 788 9902",
     profile_image: "https://tse1.mm.bing.net/th?id=OIP.hCfHyL8u8XAbreXuaiTMQgHaHZ&pid=Api&P=0&h=180"
-  }
+  },
+  showDropdown: false
 }
 
 export const mainSlice = createSlice({
@@ -23,11 +24,15 @@ export const mainSlice = createSlice({
     updateChatBubble: (state, action: PayloadAction<IChatBubble>) => {
       state.chats.push(action.payload)
     },
-  },
+    setShowDropdown: (state, action: PayloadAction<boolean>) => {
+      state.showDropdown = action.payload
+    },
+  }
 })
 
 export const { 
-  updateChatBubble 
+  updateChatBubble,
+  setShowDropdown
 } = mainSlice.actions
 
 export default mainSlice.reducer

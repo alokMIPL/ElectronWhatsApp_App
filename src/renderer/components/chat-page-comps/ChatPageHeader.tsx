@@ -15,10 +15,14 @@ import { setShowDropdown } from '../../shared/rdx-slice'
 export const ChatPageHeader = () => {
 
   const dispatch = useAppDispatch()
+  const handleShowDropdown = React.useCallback((e: any) => {
+    e.stopPropagation();
+    dispatch(setShowDropdown(true))
+  },[]);
 
   return (
     <div className='chat-page-header' >
-      <div onClick={() => dispatch(setShowDropdown(true))} >
+      <div onClick={handleShowDropdown} >
         <div>
           <img src="https://tse1.mm.bing.net/th?id=OIP.hCfHyL8u8XAbreXuaiTMQgHaHZ&pid=Api&P=0&h=180" alt="" />
           <DropdownEl/>
